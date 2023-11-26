@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpotifyService } from '../services/spotify.service';
 import { HttpClientModule } from '@angular/common/http';
+import { SPlaylist, SPlaylistItems } from '../../interfaces/spotify-interface';
 
 @Component({
   selector: 'app-playlist',
@@ -11,7 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   styleUrl: './playlist.component.scss',
 })
 export class PlaylistComponent {
-  playlists!: any;
+  playlists!: SPlaylistItems[];
 
   constructor(private spotify: SpotifyService) {}
 
@@ -21,9 +22,10 @@ export class PlaylistComponent {
   }
 
   getPlaylists() {
-    this.spotify.playlistInfo().subscribe((res) => {
+    this.spotify.playlistInfo().subscribe((res: SPlaylist) => {
       console.log(res);
       this.playlists = res.items;
     });
   }
+  loadMorePlaylists() {}
 }

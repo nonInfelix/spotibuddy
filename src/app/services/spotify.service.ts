@@ -10,7 +10,7 @@ export class SpotifyService {
   constructor(private http: HttpClient) {}
 
   playlistInfo(): Observable<SPlaylist> {
-    return this.http.get<any>('http://localhost:3000/user-playlists', {
+    return this.http.get<SPlaylist>('http://localhost:3000/user-playlists', {
       withCredentials: true,
     });
   }
