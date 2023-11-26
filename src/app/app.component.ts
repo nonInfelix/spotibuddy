@@ -25,4 +25,7 @@ export class AppComponent {
   getUser() {
     this.auth.userInfo();
   }
+  getPlaylists() {
+    this.auth.playlistInfo();
+  }
 }

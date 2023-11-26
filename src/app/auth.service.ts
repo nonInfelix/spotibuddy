@@ -20,4 +20,11 @@ export class AuthService {
         console.log(response);
       });
   }
+  playlistInfo() {
+    this.http
+      .get('http://localhost:3000/user-playlists', { withCredentials: true })
+      .subscribe((response) => {
+        console.log(response);
+      });
+  }
 }
