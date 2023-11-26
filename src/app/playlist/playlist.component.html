@@ -1,0 +1,4 @@
+<button (click)="getPlaylists()">Playlists</button>
+<div *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID">
+    <div>{{playlist.name}}</div>
+</div>
