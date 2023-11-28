@@ -2,4 +2,4 @@
 <div *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID">
     <div>{{playlist.name}}</div>
 </div>
-<button *ngIf="playlists" (click)="loadMorePlaylists()">load more</button>
+<button *ngIf="playlists && isFullyLoaded===false" (click)="loadMorePlaylists()">load more</button>

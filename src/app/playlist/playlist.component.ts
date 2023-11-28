@@ -13,6 +13,8 @@ import { SPlaylist, SPlaylistItems } from '../../interfaces/spotify-interface';
 })
 export class PlaylistComponent {
   playlists!: SPlaylistItems[];
+  offset: number = 50;
+  isFullyLoaded: boolean = false;
 
   constructor(private spotify: SpotifyService) {}
 
@@ -27,5 +29,14 @@ export class PlaylistComponent {
       this.playlists = res.items;
     });
   }
-  loadMorePlaylists() {}
+  loadMorePlaylists() {
+    this.spotify.loadMore(this.offset).subscribe((res: SPlaylist) => {
+      console.log(res);
+      this.playlists.push(...res.items);
+      this.offset += 50;
+      if (res.total == this.playlists.length) {
+        this.isFullyLoaded = true;
+      }
+    });
+  }
 }

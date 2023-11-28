@@ -14,4 +14,12 @@ export class SpotifyService {
       withCredentials: true,
     });
   }
+  loadMore(offset: number): Observable<SPlaylist> {
+    return this.http.get<SPlaylist>(
+      `http://localhost:3000/load-more-playlists?offset=${offset}`,
+      {
+        withCredentials: true,
+      }
+    );
+  }
 }
