@@ -27,3 +27,10 @@ export interface SUser {
   images: Array<any>;
   type: string;
 }
+
+export interface STracks {
+  id: string;
+  artists: string;
+  name: string;
+  duration: number;
+}

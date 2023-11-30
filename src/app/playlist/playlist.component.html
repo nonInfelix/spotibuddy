@@ -1,5 +1,6 @@
-<button (click)="getPlaylists()">Playlists</button>
+<app-user></app-user>
 <div *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID">
     <div>{{playlist.name}}</div>
+    <button (click)="onPlaylistClick(playlist)">auswählen</button>
 </div>
 <button *ngIf="playlists && isFullyLoaded===false" (click)="loadMorePlaylists()">load more</button>

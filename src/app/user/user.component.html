@@ -1,3 +1,2 @@
-<button (click)="login()">Spotify Login</button>
-<button (click)="getUser()">User</button>
-<div *ngIf="user">{{user | json}}</div>
+<button *ngIf="!user" (click)="login()">Spotify Login</button>
+<h2 *ngIf="user">Hi,{{user.display_name}}</h2>

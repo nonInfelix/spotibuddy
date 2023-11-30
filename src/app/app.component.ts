@@ -3,9 +3,9 @@ import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
-import { PlaylistComponent } from './playlist/playlist.component';
-import { UserComponent } from './user/user.component';
 import { SpotifyService } from './services/spotify.service';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ import { SpotifyService } from './services/spotify.service';
     CommonModule,
     RouterOutlet,
     HttpClientModule,
-    PlaylistComponent,
-    UserComponent,
+    HeaderComponent,
+    FooterComponent,
   ],
   providers: [AuthService, SpotifyService],
   templateUrl: './app.component.html',
@@ -24,5 +24,5 @@ import { SpotifyService } from './services/spotify.service';
 export class AppComponent {
   title = 'spotify-converter';
 
-  constructor(private auth: AuthService) {}
+  constructor() {}
 }
