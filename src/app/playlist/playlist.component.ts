@@ -1,22 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SpotifyService } from '../services/spotify.service';
 import { HttpClientModule } from '@angular/common/http';
-import { SPlaylist, SPlaylistItems } from '../../interfaces/spotify-interface';
+import {
+  SPlaylist,
+  SPlaylistItems,
+  STracks,
+} from '../../interfaces/spotify-interface';
+import { UserComponent } from '../user/user.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-playlist',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule, HttpClientModule, UserComponent],
   templateUrl: './playlist.component.html',
   styleUrl: './playlist.component.scss',
 })
-export class PlaylistComponent {
+export class PlaylistComponent implements OnInit {
   playlists!: SPlaylistItems[];
   offset: number = 50;
   isFullyLoaded: boolean = false;
+  currentPlaylist!: SPlaylistItems;
 
-  constructor(private spotify: SpotifyService) {}
+  constructor(private spotify: SpotifyService, private router: Router) {}
+
+  ngOnInit() {
+    this.getPlaylists();
+  }
 
   // funktion für ngFor trackBy
   trackByPlaylistID(index: number, playlist: any): string {
@@ -38,5 +49,14 @@ export class PlaylistComponent {
         this.isFullyLoaded = true;
       }
     });
+  }
+  onPlaylistClick(playlist: SPlaylistItems) {
+    this.currentPlaylist = playlist;
+    this.UpdateCurrentPlaylist(); // Aufruf der Methode für das BehaviorSubject
+    this.router.navigate(['/playlist', playlist.id]);
+  }
+  //Methode um die Playlist an das BehavioSubject zu übergeben
+  UpdateCurrentPlaylist() {
+    this.spotify.changePlaylist(this.currentPlaylist);
   }
 }
