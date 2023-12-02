@@ -1,4 +1,5 @@
 <h2 *ngIf="currentPlaylist!==null">Playlist {{currentPlaylist.name}}</h2>
+<a href="http://localhost:3000/google-auth">Playlist umwandeln</a>
 <ul *ngFor="let track of tracks">
     <h3>{{track.name}}</h3>
     <li *ngFor="let artist of track.artists">
