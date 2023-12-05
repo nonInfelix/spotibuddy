@@ -10,10 +10,23 @@ import {
 import { UserComponent } from '../user/user.component';
 import { Router } from '@angular/router';
 
+import { ButtonModule } from 'primeng/button';
+import { CardModule } from 'primeng/card';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+
 @Component({
   selector: 'app-playlist',
   standalone: true,
-  imports: [CommonModule, HttpClientModule, UserComponent],
+  imports: [
+    CommonModule,
+    HttpClientModule,
+    UserComponent,
+    ButtonModule,
+    CardModule,
+    AvatarGroupModule,
+    AvatarModule,
+  ],
   templateUrl: './playlist.component.html',
   styleUrl: './playlist.component.scss',
 })
@@ -36,13 +49,14 @@ export class PlaylistComponent implements OnInit {
 
   getPlaylists() {
     this.spotify.playlistInfo().subscribe((res: SPlaylist) => {
-      console.log(res);
+      console.log('response from getPlaylists  ', res);
       this.playlists = res.items;
+      this.offset += 50;
     });
   }
   loadMorePlaylists() {
     this.spotify.loadMore(this.offset).subscribe((res: SPlaylist) => {
-      console.log(res);
+      console.log('loading more playlists: ', res);
       this.playlists.push(...res.items);
       this.offset += 50;
       if (res.total == this.playlists.length) {

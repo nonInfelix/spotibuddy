@@ -23,6 +23,4 @@ import { FooterComponent } from './footer/footer.component';
 })
 export class AppComponent {
   title = 'spotify-converter';
-
-  constructor() {}
 }

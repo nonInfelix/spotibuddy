@@ -1,6 +1,24 @@
 <app-user></app-user>
+<!--
 <div *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID">
     <div>{{playlist.name}}</div>
-    <button (click)="onPlaylistClick(playlist)">auswählen</button>
+    <p-button label="auswählen" (click)="onPlaylistClick(playlist)"></p-button>
 </div>
-<button *ngIf="playlists && isFullyLoaded===false" (click)="loadMorePlaylists()">load more</button>
+-->
+<div *ngIf="playlists" class="playlist-container">
+    <p-card *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID" [header]="playlist.name">
+        <ng-template pTemplate="header">
+            <img alt="Card" [src]="playlist.images[0].url" />
+            <p-avatar class="card-tracks" size="normal" shape="circle">
+                <span class="text-base">{{playlist.tracks.total}}</span>
+            </p-avatar>
+        </ng-template>
+        <p class="card-content">
+            {{playlist.description}}
+        </p>
+        <ng-template pTemplate="footer">
+            <p-button (click)="onPlaylistClick(playlist)" label="Playlist auswählen"></p-button>
+        </ng-template>
+    </p-card>
+    <p-button *ngIf="!isFullyLoaded" label="mehr anzeigen" (click)="loadMorePlaylists()"></p-button>
+</div>

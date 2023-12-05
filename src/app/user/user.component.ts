@@ -4,15 +4,20 @@ import { AuthService } from '../services/auth.service';
 import { SUser } from '../../interfaces/spotify-interface';
 import { ActivatedRoute } from '@angular/router';
 
+import { ButtonModule } from 'primeng/button';
+import { AvatarModule } from 'primeng/avatar';
+import { AvatarGroupModule } from 'primeng/avatargroup';
+
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, ButtonModule, AvatarGroupModule, AvatarModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
 })
 export class UserComponent implements OnInit {
   user!: SUser;
+  isLoggedIn: boolean = false;
 
   constructor(private auth: AuthService, private route: ActivatedRoute) {}
 
@@ -23,6 +28,7 @@ export class UserComponent implements OnInit {
         this.getUser();
       }
     });
+    this.getUser();
   }
 
   login() {
@@ -32,6 +38,7 @@ export class UserComponent implements OnInit {
     this.auth.userInfo().subscribe((res: SUser) => {
       console.log(res);
       this.user = res;
+      this.isLoggedIn = true;
     });
   }
 }

@@ -1,9 +1,29 @@
-<h2 *ngIf="currentPlaylist!==null">Playlist {{currentPlaylist.name}}</h2>
-<a href="http://localhost:3000/google-auth">Playlist umwandeln</a>
-<ul *ngFor="let track of tracks">
-    <h3>{{track.name}}</h3>
-    <li *ngFor="let artist of track.artists">
-        {{artist}}
-    </li>
+<div class="warning">
+    <p class="warning-message">Dieses Tool befindet sich im Entwicklungsmodus. Es bestehen begrenzte Kontingente.
+        Wenn Sie sich mit Youtube verbinden möchten, müssen Sie auf die Warteliste.
+    </p>
+</div>
+<div class="warning">
+    <p class="warning-message">Der Umwandlungs-Prozess beginnt unmittelbar nach der Anmeldung bei Google, bitte warten
+        Sie.
+    </p>
+</div>
+<br>
+<h2 *ngIf="currentPlaylist!==null">{{currentPlaylist.name}}</h2>
 
-</ul>
+<a class="btn" href="http://localhost:3000/google-auth">Playlist umwandeln</a>
+
+<p-table *ngIf="tracks.length > 0" [value]="tracks">
+    <ng-template pTemplate="header">
+        <tr>
+            <th>Name</th>
+            <th>Künstler</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-track>
+        <tr>
+            <td>{{ track.name }}</td>
+            <td>{{ track.artists }}</td>
+        </tr>
+    </ng-template>
+</p-table>

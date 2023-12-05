@@ -1,0 +1,30 @@
+.header-container {
+  margin-bottom: 2rem;
+  padding: 1rem 2rem 1rem 2rem;
+  display: grid;
+  grid-template-areas: "icon menu";
+  grid-template-columns: 10%, auto;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+
+  border-bottom: 1px solid transparent; /* Transparente untere Border erstellen */
+  border-image: linear-gradient(
+    to right,
+    #6abd6e,
+    transparent
+  ); /* Gradient für die Border festlegen */
+  border-image-slice: 1; /* Die gesamte Border verwenden */
+}
+
+.header-icon {
+  height: 40px;
+  width: 40px;
+  grid-area: icon;
+}
+
+.heading {
+  grid-area: menu;
+  font-size: 40px;
+  color: #6abd6e;
+}
