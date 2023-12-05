@@ -1,0 +1,23 @@
+.login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #6abd6e;
+  border-radius: 5px;
+  padding: 0.5rem;
+}
+.login p {
+  text-align: center;
+  padding-bottom: 0.5rem;
+}
+.user {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.user h2 {
+  text-align: center;
+  padding-bottom: 2rem;
+}

@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+@import "primeicons/primeicons.css";
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+  padding: 0;
+}
+.p-card-footer {
+  display: flex;
+  justify-content: center;
+  align-self: end;
+}
+.p-card-header {
+  height: 366px;
+  position: relative;
+}
+.p-card-header img {
+  height: 366px;
+  object-fit: cover;
+}
+.p-card-body {
+  height: 250px;
+  display: grid;
+}
+.p-card {
+  margin-bottom: 1.5rem;
+}
+.p-card-body p {
+  white-space: nowrap; /* Verhindert das Umbruch des Textes */
+  overflow: hidden; /* Versteckt den überlaufenden Text */
+  text-overflow: ellipsis; /* Fügt "..." hinzu, um abgeschnittenen Text anzuzeigen */
+  max-width: 300px; /* Die maximale Breite, bei der der Text abgeschnitten wird */
+}
+.p-component table {
+  font-size: 0.9rem;
+  width: 100vw;
+  overflow: hidden;
+}

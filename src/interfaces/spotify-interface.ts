@@ -12,7 +12,7 @@ export interface SPlaylistItems {
   description: string;
   href: string;
   id: string;
-  images: Array<{}>;
+  images: Array<any>;
   name: string;
   tracks: {
     href: string;
