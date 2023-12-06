@@ -1,4 +1,106 @@
-# SpotifyConverter
+
+# Spotify-zu-YouTube Playlist Konverter
+
+Dieses Projekt ermöglicht es Benutzern, ihre Spotify-Playlists nahtlos in YouTube-Playlists zu konvertieren. Es nutzt Angular für die Front-End-Entwicklung und eine eigens entwickelte API für die Backend-Logik.
+
+__Die App befindet sich im Entwicklung, deswegen sind nur begrenzte Kontingente seitens Youtube verfügbar. Google setzt dabei voraus, dass verbundene Google Konten auf der Testnutzer-Liste sind.__
+
+
+
+
+## Tech Stack
+
+**Client:** Angular v17, PrimeNG, SCSS
+
+**Server:** Node, Express, Axios
+
+
+## Demo
+
+https://spotibuddy.vercel.app/
+
+
+## API Reference
+https://github.com/nonInfelix/spotibuddy-api
+#### Authentifizierung
+Weiterleitung zur Route login
+```http
+  GET /auth
+```
+#### Weiterleitung Spotify OAuth
+Weiterleitung zur spotify Login Seite, Weiterleitung zur redirect URI von spotify
+```http
+  GET /login
+```
+#### callback Funktion
+Fordert per axios den AccessToken, RefreshToken und Ablaufdatum an.
+Gibt AccessToken und RefreshToken als Cookie zurück. 
+Leitet weiter an Frontend /playlist?log=1
+```http
+  GET /callback
+```
+
+#### Spotify User Profil
+__erfordert AccessToken__. 
+Fordert eigene Profildaten an.
+```http
+  GET /user-profile
+```
+#### Spotify User Profil
+__erfordert AccessToken__. 
+Fordert eigene Profildaten an.
+```http
+  GET /user-profile
+```
+
+#### Spotify User Playlists
+__erfordert AccessToken__. 
+Fordert eigene Playlists an.
+```http
+  GET /user-playlists
+```
+#### Spotify load more playlists
+__erfordert AccessToken__. 
+Fordert mehr Playlists an. 
+```http
+  GET /load-more-playlists?offset=${offset}
+```
+#### Spotify load more playlists
+__erfordert AccessToken und offset Wert (z.B. 50)__. 
+Fordert mehr Playlists an. 
+```http
+  GET /load-more-playlists?offset=${offset}
+```
+#### Spotify Lieder von ausgewählter Playlist
+__erfordert AccessToken und Playlist-ID__. 
+Fordert mehr Playlists an. 
+```http
+  GET /playlist-tracks?id=${id}
+```
+#### Google Anmeldung
+Leitet weiter an Google Anmeldefenster, danach an /google/callback
+Fordert mehr Playlists an. 
+```http
+  GET /google-auth
+```
+#### Google callback
+Fordert AccessToken an.
+Erstellt Youtube Playlist. Durchsucht Youtube nach den Liedern der Playlist.
+Fügt Lieder in die Playlist ein. (zu finden unter spotify-converter + zufälliger, 10-stelliger string) __queryLimit muss eingestellt werden, sonst können nur 2 Lieder umgewandelt werden (default = 2)__
+Weiterleitung zur /confirm Seite des Frontends
+```http
+  GET /google/callback
+```
+### Umgebungsvariablen API
+    PORT
+    CLIENT_ID (Spotify)
+    CLIENT_SECRET (Spotify)
+    REDIRECT_URI (Spotify)
+    YT_CLIENT_ID (YouTube)
+    YT_CLIENT_SECRET (YouTube)
+    YT_REDIRECT_URI (YouTube)
+
+## SpotifyConverter
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
 
