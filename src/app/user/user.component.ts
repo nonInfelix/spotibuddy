@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
   }
 
   login() {
-    window.location.href = 'https://spotibuddy.onrender.com//auth';
+    window.location.href = 'https://spotibuddy.onrender.com/auth';
   }
   getUser() {
     this.auth.userInfo().subscribe((res: SUser) => {
