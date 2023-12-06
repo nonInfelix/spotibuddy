@@ -14,7 +14,9 @@ export class PlaylistConfirmComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
+    /*
     setTimeout(() => this.router.navigate(['']), 10000);
     setInterval(() => (this.timer -= 1), 1000);
+    */
   }
 }
