@@ -20,13 +20,16 @@ export class SpotifyService {
   constructor(private http: HttpClient) {}
 
   playlistInfo(): Observable<SPlaylist> {
-    return this.http.get<SPlaylist>('http://localhost:3000/user-playlists', {
-      withCredentials: true,
-    });
+    return this.http.get<SPlaylist>(
+      'https://spotibuddy.onrender.com/user-playlists',
+      {
+        withCredentials: true,
+      }
+    );
   }
   loadMore(offset: number): Observable<SPlaylist> {
     return this.http.get<SPlaylist>(
-      `http://localhost:3000/load-more-playlists?offset=${offset}`,
+      `https://spotibuddy.onrender.com/load-more-playlists?offset=${offset}`,
       {
         withCredentials: true,
       }
@@ -34,7 +37,7 @@ export class SpotifyService {
   }
   tracksInfo(id: string): Observable<STracks[]> {
     return this.http.get<STracks[]>(
-      `http://localhost:3000/playlist-tracks?id=${id}`,
+      `https://spotibuddy.onrender.com/playlist-tracks?id=${id}`,
       {
         withCredentials: true,
       }

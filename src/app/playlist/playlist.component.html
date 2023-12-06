@@ -1,10 +1,4 @@
 <app-user></app-user>
-<!--
-<div *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID">
-    <div>{{playlist.name}}</div>
-    <p-button label="auswählen" (click)="onPlaylistClick(playlist)"></p-button>
-</div>
--->
 <div *ngIf="playlists" class="playlist-container">
     <p-card *ngFor="let playlist of playlists; index as i; trackBy:trackByPlaylistID" [header]="playlist.name">
         <ng-template pTemplate="header">
