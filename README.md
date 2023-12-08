@@ -14,6 +14,9 @@ __Die App befindet sich im Entwicklung, deswegen sind nur begrenzte Kontingente 
 
 **Server:** Node, Express, Axios
 
+## Screenshots
+![Screenshot 2023-12-08 140454](https://github.com/nonInfelix/spotibuddy/assets/96667784/7f67d366-acee-41fe-91e8-4626b6c39a79)
+
 
 ## Demo
 
