@@ -21,7 +21,7 @@ export class SpotifyService {
 
   playlistInfo(): Observable<SPlaylist> {
     return this.http.get<SPlaylist>(
-      'https://spotibuddy.onrender.com/user-playlists',
+      'https://spotibuddy-api.vercel.app/user-playlists',
       {
         withCredentials: true,
       }
@@ -29,7 +29,7 @@ export class SpotifyService {
   }
   loadMore(offset: number): Observable<SPlaylist> {
     return this.http.get<SPlaylist>(
-      `https://spotibuddy.onrender.com/load-more-playlists?offset=${offset}`,
+      `https://spotibuddy-api.vercel.app/load-more-playlists?offset=${offset}`,
       {
         withCredentials: true,
       }
@@ -37,7 +37,7 @@ export class SpotifyService {
   }
   tracksInfo(id: string): Observable<STracks[]> {
     return this.http.get<STracks[]>(
-      `https://spotibuddy.onrender.com/playlist-tracks?id=${id}`,
+      `https://spotibuddy-api.vercel.app/playlist-tracks?id=${id}`,
       {
         withCredentials: true,
       }
