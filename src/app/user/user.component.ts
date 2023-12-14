@@ -32,7 +32,7 @@ export class UserComponent implements OnInit {
   }
 
   login() {
-    window.location.href = 'https://spotibuddy-api.vercel.app/auth';
+    window.location.href = 'http://localhost:3000/auth';
   }
   getUser() {
     this.auth.userInfo().subscribe((res: SUser) => {

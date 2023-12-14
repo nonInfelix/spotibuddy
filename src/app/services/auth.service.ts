@@ -12,15 +12,12 @@ export class AuthService {
   tokenObj!: {};
 
   getToken() {
-    return this.http.get('https://spotibuddy-api.vercel.app/auth');
+    return this.http.get('http://localhost:3000/auth');
   }
 
   userInfo(): Observable<SUser> {
-    return this.http.get<SUser>(
-      'https://spotibuddy-api.vercel.app/user-profile',
-      {
-        withCredentials: true,
-      }
-    );
+    return this.http.get<SUser>('http://localhost:3000/user-profile', {
+      withCredentials: true,
+    });
   }
 }
