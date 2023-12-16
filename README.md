@@ -18,10 +18,6 @@ __Die App befindet sich im Entwicklung, deswegen sind nur begrenzte Kontingente 
 ![Screenshot 2023-12-08 140454](https://github.com/nonInfelix/spotibuddy/assets/96667784/7f67d366-acee-41fe-91e8-4626b6c39a79)
 
 
-## Demo
-
-https://spotibuddy.vercel.app/
-
 
 ## API Reference
 https://github.com/nonInfelix/spotibuddy-api
@@ -43,12 +39,6 @@ Leitet weiter an Frontend /playlist?log=1
   GET /callback
 ```
 
-#### Spotify User Profil
-__erfordert AccessToken__. 
-Fordert eigene Profildaten an.
-```http
-  GET /user-profile
-```
 #### Spotify User Profil
 __erfordert AccessToken__. 
 Fordert eigene Profildaten an.
