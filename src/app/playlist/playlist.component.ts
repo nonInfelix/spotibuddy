@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { CardModule } from 'primeng/card';
 import { AvatarModule } from 'primeng/avatar';
 import { AvatarGroupModule } from 'primeng/avatargroup';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-playlist',
@@ -36,9 +37,24 @@ export class PlaylistComponent implements OnInit {
   isFullyLoaded: boolean = false;
   currentPlaylist!: SPlaylistItems;
 
-  constructor(private spotify: SpotifyService, private router: Router) {}
+  constructor(
+    private spotify: SpotifyService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
+    // token wird im frontend gesetzt, da api auf anderer domain läuft
+    this.route.queryParams.subscribe((params) => {
+      const accessToken = params['access_token'];
+      const refreshToken = params['refresh_token'];
+      let maxAge = params['maxAge'];
+      maxAge = Number(maxAge) * 1000;
+      let expires = new Date();
+      expires.setTime(expires.getTime() + maxAge);
+      document.cookie = `access_token=${accessToken};expires=${expires.toUTCString()}`;
+      document.cookie = `refresh_token=${refreshToken};expires=${expires.toUTCString()}`;
+    });
     this.getPlaylists();
   }
 
